@@ -46,9 +46,19 @@ public class CarMenu {
 
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
-
-        // TODO: Implement car-specific actions
-        System.out.println("Car action not yet implemented.");
+        switch (choice) {
+            case 1:
+                Car.CarList();
+                break;
+            case 2:
+                Car.addCar(scanner);
+                break;
+            case 3:
+                Car.removeCar(scanner);
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+        }
     }
 
     private static void handleTrucks(Scanner scanner) {
@@ -61,8 +71,20 @@ public class CarMenu {
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
-        // TODO: Implement truck-specific actions
-        System.out.println("Truck action not yet implemented.");
+        switch (choice) {
+            case 1:
+                Truck.truckList();
+                break;
+            case 2:
+                Truck.addTruck(scanner);
+                break;
+            case 3:
+                Truck.removeTruck(scanner);
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+        }
+
     }
 
     private static void handleMotorcycles(Scanner scanner) {
@@ -75,23 +97,40 @@ public class CarMenu {
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
+        switch (choice) {
+            case 1:
+                Motorcycle.motorList();
+                break;
+            case 2:
+                Motorcycle.addMotor(scanner);
+                break;
+            case 3:
+                Motorcycle.removeMotor(scanner);
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+        }
+
         // TODO: Implement motorcycle-specific actions
         System.out.println("Motorcycle action not yet implemented.");
 
-        Car car = new Car();
+        Car car = new Car("0054","Red",6000);
         // Truck truck = new Truck(778,"green",9000.00);
         //Motorcycle motorcycle = new Motorcycle(004,"Red,5000");
 
-        List<Car> vehicles = new ArrayList<>();
-        vehicles.add(car);
+      //  List<Car> cars = new ArrayList<>();
+      //  car.add(cars);
+
+        Vehicle car1 =new Car("00088","Red",500);
+        Vehicle car2 = new Car("00123","Blue",600);
+        Vehicle truck1 = new Truck("750","green",6000);
+        Vehicle truck2 = new Truck("777","Red",5000);
+        Vehicle motorcycle1 = new Motorcycle("005","Red",5000);
+        Vehicle motorcycle2 = new Motorcycle("006","Blue",5000);
 
 
-        for (Car vehicle : vehicles) {
-            System.out.println("Vehicle: " + vehicle.getLicensePlate());
-            System.out.println("Is rented: " + (vehicle.isRented() ? "Yes" : "No"));
-            System.out.println("Total rental price: " + vehicle.calculateTotalRentalPrice(5));
-            System.out.println("Last 5 rentals:");
-            Object Rental;
-        }
+
+
+
     }
 }

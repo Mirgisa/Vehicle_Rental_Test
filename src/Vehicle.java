@@ -1,21 +1,82 @@
+
+import java.util.ArrayList;
 import java.util.List;
 
-public interface Vehicle {
-    void AddVehicle(Vehicle vehicle);
+public abstract class Vehicle {
+    private String vehicleType;
+    private String licencePlateNumber;
+    private List<Vehicle> vehicles;
+    private String colour;
+    private boolean isRented;
 
-    void RemoveVehicle(Vehicle vehicle);
+    public Vehicle(String vehicleType, String licencePlateNumber) {
+        this.vehicleType = vehicleType;
+        this.licencePlateNumber = licencePlateNumber;
+        this.colour = colour;
+        this.isRented = false;
+        this.vehicles = new ArrayList<>();
+    }
 
-    boolean isFree();
+    public String getVehicleType() {
+        return vehicleType;
+    }
 
-    double calculateTotalPrice(int days);
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
+    }
 
-    List<Car> carlist();
-    List<Truck> trucklist();
-    List<Motorcycle> cyclelist();
+    public String getLicencePlateNumber() {
+        return licencePlateNumber;
+    }
 
-    String getLicensePlate();
+    public List<Vehicle> getVehicles() {
+        return vehicles;
+    }
 
-    boolean isRented();
+    public String getColour() {
+        return colour;
+    }
 
-    String calculateTotalRentalPrice(int i);
+    public boolean isFree() {
+        return !isRented;
+    }
+
+    public void setRented(boolean rented) {
+        isRented = rented;
+    }
+
+    public String getLicensePlate() {
+        return licencePlateNumber;
+    }
+
+    public void addVehicle(Vehicle vehicle) {
+        if (vehicles == null) {
+            vehicles = new ArrayList<>();
+        }
+        vehicles.add(vehicle);
+    }
+
+    public void removeVehicle(Vehicle vehicle) {
+        if (vehicles != null) {
+            vehicles.remove(vehicle);
+        }
+    }
+
+    /**
+     * Calculate the total rental price for the given number of days.
+     * @param days The number of days for the rental period.
+     * @return The total price for the rental.
+     */
+    public abstract double calculateTotalPrice(int days);
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "vehicleType='" + vehicleType + '\'' +
+                ", licencePlateNumber='" + licencePlateNumber + '\'' +
+                ", vehicles=" + vehicles +
+                ", colour='" + colour + '\'' +
+                ", isRented=" + isRented +
+                '}';
+    }
 }
